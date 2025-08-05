@@ -67,6 +67,8 @@ namespace DriveConstants {
     constexpr int kFrontRightTurningCanId = 29;
     constexpr int kRearRightTurningCanId = 14;
 
+    constexpr int kLoaderMotorCanId = 21;
+
     //needs to be adjusted per our robot
   const units::meter_t CAMERA_HEIGHT = 10.5_in;
 
