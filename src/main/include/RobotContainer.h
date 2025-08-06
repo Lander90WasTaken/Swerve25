@@ -22,6 +22,8 @@
 #include "subsystems/CoralCollector.h"
 #include "subsystems/Elevator.h"
 #include "subsystems/Pivot.h"
+#include "subsystems/Pincher.h"
+#include "subsystems/Loader.h"
 #include "subsystems/Climber.h"
 #include "subsystems/LEDS.h"
 /**

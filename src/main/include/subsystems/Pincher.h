@@ -9,11 +9,11 @@
 using namespace rev::spark;
 
 
-class Loader : public frc2::SubsystemBase{
+class Pincher : public frc2::SubsystemBase{
     public:
-        Loader();
+        Pincher();
 
-        void RunLoader();
+        void RunPincher();
 
         void Periodic() override;
 
@@ -21,9 +21,7 @@ class Loader : public frc2::SubsystemBase{
 
         double EncoderValue();
 
-
     private:
-        SparkMax m_loaderMotor{loaderConstants::kLoaderMotorCanId, SparkLowLevel::MotorType::kBrushless};
-        SparkRelativeEncoder m_loaderEncoder = m_loaderMotor.GetEncoder();
-
+        frc::AnalogInput m_limitSwitch{0}
+        frc::Solenoid m_pincherSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1};
 };

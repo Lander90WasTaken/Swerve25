@@ -57,15 +57,15 @@ namespace DriveConstants {
 
 
     // SPARK MAX CAN IDs
-    constexpr int kFrontLeftDrivingCanId = 15;
-    constexpr int kRearLeftDrivingCanId = 27;
-    constexpr int kFrontRightDrivingCanId = 18;
-    constexpr int kRearRightDrivingCanId = 16;
+    constexpr int kFrontLeftDrivingCanId = 7;
+    constexpr int kRearLeftDrivingCanId = 8;
+    constexpr int kFrontRightDrivingCanId = 9;
+    constexpr int kRearRightDrivingCanId = 14;
 
-    constexpr int kFrontLeftTurningCanId = 28;  
-    constexpr int kRearLeftTurningCanId = 20;
-    constexpr int kFrontRightTurningCanId = 29;
-    constexpr int kRearRightTurningCanId = 14;
+    constexpr int kFrontLeftTurningCanId = 15;  
+    constexpr int kRearLeftTurningCanId = 16;
+    constexpr int kFrontRightTurningCanId = 17;
+    constexpr int kRearRightTurningCanId = 18;
 
     constexpr int kLoaderMotorCanId = 21;
 
@@ -163,7 +163,7 @@ namespace OIConstants {
 }  // namespace OIConstants
 
 namespace CoralCollectorConstants {
-  constexpr int kCoralCollectorLeftCanId = 17;
+  constexpr int kCoralCollectorLeftCanId = 19;
   constexpr int kCoralCollectorRightCanId = 13;
   constexpr double kCoralCollectorSpeed = 0.30; // 0.65
   constexpr double kCoralCollectorSpeedSlower = 0.1;
@@ -207,6 +207,9 @@ namespace ClimberConstants {
   constexpr int kClimberMotorCanId = 31;
 }
 
+namespace PincherConstants {
+  constexpr int kPincherMotorCanId = 4;
+}
 //17 = right coral collector
 //23 = left coral collector
 

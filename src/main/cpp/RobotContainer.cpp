@@ -279,20 +279,18 @@ void RobotContainer::ConfigureButtonBindings() {
         }
     }, {&m_elevator}));*/
 
-    /*frc2::JoystickButton(&m_coDriverController, frc::XboxController::Button::kA).WhileTrue(new frc2::RunCommand([this] {
-         //it's possible that we are too close to the reef to safely lower the elevator
-        //if an april tag is present - to avoid damaging the robot we run only if it is safe. 
-        photon::PhotonTrackedTarget target = hasValidAprilTagTarget();
-        if (target.GetFiducialId() > 0) {
-            double targetArea = target.GetArea();
-            if (targetArea < ElevatorConstants::kElevatorToCloseToReef){
-                m_elevator.SetpointMovement();
-            }
+    frc2::JoystickButton(&m_coDriverController, frc::XboxController::Button::kRightBumper).WhileTrue(new frc2::RunCommand([this] {
+        if(m_pivot.CurrentPosition() > PivotConstants::kchangespeedpoint){
+            m_collector.RunCoralCollectorSlower();
         }
-        else{
-            m_elevator.SetpointMovement();
+        else {
+            m_collector.RunCoralCollector();
+
         }
-    }, {&m_elevator}));*/
+        
+    }, {&m_collector})).OnFalse(new frc2::InstantCommand([this] {
+        m_pincherSolenoid.Set(0);
+    }, {&m_pincherSolenoid})); //should turn it off when false
 
     //TODO -- implement RunCoralCollector, and ReverseCoralCollector from the coralCollector class
 
@@ -309,16 +307,13 @@ void RobotContainer::ConfigureButtonBindings() {
         m_collector.Stop();
     }, {&m_collector})); //should turn it off when false
 
-    frc2::JoystickButton(&m_coDriverController, frc::XboxController::Button::kLeftBumper).WhileTrue(new frc2::RunCommand([this] {
-        if(m_pivot.CurrentPosition() > PivotConstants::kchangespeedpoint){
-            m_collector.ReverseCoralCollectorSlower();
-        }
-        else{
-            m_collector.ReverseCoralCollector();
-        }
-    }, {&m_collector})).OnFalse(new frc2::InstantCommand([this] {
-        m_collector.Stop();
-    }, {&m_collector})); //should turn it off when false
+    frc2::JoystickButton(&m_driverController, frc::XboxController::Button::kA).WhileTrue(new frc2::RunCommand([this] {
+        
+        m_pincherSolenoid.Set(1);
+
+    }, {&m_pincherSolenoid})).OnFalse(new frc2::InstantCommand([this] {
+        m_pincherSolenoid.Set(0);
+    }, {&m_pinchersolenoid})); //should turn it off when false
 
     frc2::JoystickButton(&m_coDriverController, frc::XboxController::Button::kY).WhileTrue(new frc2::RunCommand([this] {
         m_pivot.RunPivot();

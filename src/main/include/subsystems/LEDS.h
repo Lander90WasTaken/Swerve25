@@ -11,7 +11,7 @@ class LEDS : public frc2::SubsystemBase {
 
     void TurnOnLED(bool value);
     void TurnOffLED();
-
+    void SetLEDColor();
     bool areTheyOn();
 
 
