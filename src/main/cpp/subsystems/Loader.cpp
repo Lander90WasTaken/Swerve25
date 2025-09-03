@@ -24,7 +24,7 @@ void Loader::SimulationPeriodic(){
 }
 
 void Loader::RunLoader( ){
-    m_loaderMotor.SetPosition(m_loaderEncoder.getPosition()+0.45);
+    m_loaderMotor.SetPosition(m_loaderEncoder.GetPosition()+0.45);
 }
 
 double Loader::EncoderValue(){

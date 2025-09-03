@@ -11,8 +11,8 @@ using namespace PincherConstants;
 Pincher::Pincher(){
     SparkMaxConfig climbFollowerConfigObj;
     climbFollowerConfigObj.OpenLoopRampRate(1.75);
-    m_pincherMotor.Configure(climbFollowerConfigObj, SparkMax::ResetMode::kResetSafeParameters, SparkMax::PersistMode::kNoPersistParameters);
-    m_pincherEncoder.SetPosition(0);
+    //m_pincherMotor.Configure(climbFollowerConfigObj, SparkMax::ResetMode::kResetSafeParameters, SparkMax::PersistMode::kNoPersistParameters);
+    m_pincherSolenoid.Set(0);
 }
 
 
@@ -22,6 +22,10 @@ void Pincher::Periodic(){
 
 void Pincher::SimulationPeriodic(){
     
+}
+
+void Pincher::SetPincher(bool active){
+    m_pincherSolenoid.Set(active);
 }
 
 void Pincher::TogglePincher(){

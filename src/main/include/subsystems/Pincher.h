@@ -4,7 +4,8 @@
 #include <rev/SparkMax.h>
 #include <frc2/command/SubsystemBase.h>
 #include <Constants.h>
-#include <frc/PWM.h>
+#include <frc/AnalogInput.h>
+#include <frc/Solenoid.h>
 
 using namespace rev::spark;
 
@@ -21,7 +22,11 @@ class Pincher : public frc2::SubsystemBase{
 
         double EncoderValue();
 
+        void TogglePincher();
+
+        void SetPincher(bool active);
+
     private:
-        frc::AnalogInput m_limitSwitch{0}
-        frc::Solenoid m_pincherSolenoid{frc::PneumaticsModuleType::REVPH, 0, 1};
+        frc::AnalogInput m_limitSwitch{0};
+        frc::Solenoid m_pincherSolenoid{frc::PneumaticsModuleType::REVPH, 0};
 };

@@ -115,7 +115,7 @@ void RobotContainer::ClimberControl(){ //A
     } //A
 
    if(m_coDriverController.GetXButtonPressed()){ //A
-        m_leds.TurnOnLED(m_coDriverController.GetXButtonPressed()); //A
+        //m_leds.TurnOnLED(m_coDriverController.GetXButtonPressed()); //A
     } //A
 
 } //A
@@ -289,7 +289,7 @@ void RobotContainer::ConfigureButtonBindings() {
         }
         
     }, {&m_collector})).OnFalse(new frc2::InstantCommand([this] {
-        m_pincherSolenoid.Set(0);
+        m_pincherSolenoid.SetPincher(false);
     }, {&m_pincherSolenoid})); //should turn it off when false
 
     //TODO -- implement RunCoralCollector, and ReverseCoralCollector from the coralCollector class
@@ -309,11 +309,11 @@ void RobotContainer::ConfigureButtonBindings() {
 
     frc2::JoystickButton(&m_driverController, frc::XboxController::Button::kA).WhileTrue(new frc2::RunCommand([this] {
         
-        m_pincherSolenoid.Set(1);
+        m_pincherSolenoid.SetPincher(true);
 
     }, {&m_pincherSolenoid})).OnFalse(new frc2::InstantCommand([this] {
-        m_pincherSolenoid.Set(0);
-    }, {&m_pinchersolenoid})); //should turn it off when false
+        m_pincherSolenoid.SetPincher(true);
+    }, {&m_pincherSolenoid})); //should turn it off when false
 
     frc2::JoystickButton(&m_coDriverController, frc::XboxController::Button::kY).WhileTrue(new frc2::RunCommand([this] {
         m_pivot.RunPivot();

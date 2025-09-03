@@ -18,6 +18,7 @@
 #include <rev/SparkLowLevel.h>
 #include "Constants.h"
 #include <photon/PhotonCamera.h>
+#include <networktables/NetworkTable.h>
 #include "subsystems/DriveSubsystem.h"
 #include "subsystems/CoralCollector.h"
 #include "subsystems/Elevator.h"
@@ -26,6 +27,8 @@
 #include "subsystems/Loader.h"
 #include "subsystems/Climber.h"
 #include "subsystems/LEDS.h"
+#include "subsystems/DoctorP.h"
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -56,7 +59,9 @@ class RobotContainer {
   Pivot m_pivot;
   Elevator m_elevator;
   Climber m_climber;
-  LEDS m_leds;
+  Pincher m_pincherSolenoid;
+  LEDs m_leds;
+  DoctorP m_doctorP;
 
   frc::SendableChooser<frc2::Command*> m_chooser;
 
