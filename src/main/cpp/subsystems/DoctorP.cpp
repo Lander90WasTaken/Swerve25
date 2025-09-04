@@ -3,29 +3,27 @@
 
 DoctorP::DoctorP(){
         DoctorPInst.StartClient4("robot");
-        // connect to a roboRIO with team number 3267
-        DoctorPInst.SetServerTeam(3267);
-        // starting a DS client will try to get the roboRIO address from the DS application
-        DoctorPInst.StartDSClient();
         // connect to a specific host/port (may need to be tweaked).
         DoctorPInst.SetServer("host", NT_DEFAULT_PORT4);
+
+        auto table = DoctorPInst.GetTable("main/DoctorP");
+        //Gets X and Y values from Very Awesome Table (name and values may need to be tweaked).
+        xSub = table->GetDoubleTopic("X").Subscribe(0.0);
+        ySub = table->GetDoubleTopic("Y").Subscribe(0.0);
+
 }
 
 void DoctorP::TeleopPeriodic(){
-    auto table = DoctorPInst.GetTable("Very Awesome Table");
-    xVal = table->GetValue("X");
-    //Gets X and Y values from Very Awesome Table (name and values may need to be tweaked).
-    auto table = DoctorPInst.GetTable("Very Awesome Table");
-    yVal = table->GetValue("Y");
+    xVal = xSub.Get();
+    yVal = ySub.Get();
 }
 
-void DoctorP::GetX(){
-    auto table = DoctorPInst.GetTable("Very Awesome Table");
-    yVal = table->GetValue("X");
+  
+
+double DoctorP::GetX(){
+    return xVal;
 }
 
-void DoctorP::GetY(){
-    auto table = DoctorPInst.GetTable("Very Awesome Table");
-    yVal = table->GetValue("Y");
-    
+double DoctorP::GetY(){
+    return yVal;  
 }
