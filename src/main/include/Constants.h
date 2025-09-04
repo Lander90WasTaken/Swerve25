@@ -67,7 +67,7 @@ namespace DriveConstants {
     constexpr int kFrontRightTurningCanId = 17;
     constexpr int kRearRightTurningCanId = 18;
 
-    constexpr int kLoaderMotorCanId = 21;
+   
 
     //needs to be adjusted per our robot
   const units::meter_t CAMERA_HEIGHT = 10.5_in;
@@ -209,6 +209,10 @@ namespace ClimberConstants {
 
 namespace PincherConstants {
   constexpr int kPincherMotorCanId = 4;
+}
+
+namespace LoaderConstants {
+   constexpr int kLoaderMotorCanId = 21;
 }
 //17 = right coral collector
 //23 = left coral collector

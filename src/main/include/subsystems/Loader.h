@@ -5,6 +5,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include <Constants.h>
 #include <frc/PWM.h>
+#include "Constants.h"
 
 using namespace rev::spark;
 
@@ -23,7 +24,7 @@ class Loader : public frc2::SubsystemBase{
 
 
     private:
-        SparkMax m_loaderMotor{loaderConstants::kLoaderMotorCanId, SparkLowLevel::MotorType::kBrushless};
+        SparkMax m_loaderMotor{LoaderConstants::kLoaderMotorCanId, SparkLowLevel::MotorType::kBrushless};
         SparkRelativeEncoder m_loaderEncoder = m_loaderMotor.GetEncoder();
 
 };

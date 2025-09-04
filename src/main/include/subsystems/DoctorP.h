@@ -2,7 +2,6 @@
 #include <networktables/NetworkTableInstance.h>
 #include <networktables/NetworkTable.h>
 #include <networktables/DoubleTopic.h>
-#include <vector>
 
 
 class DoctorP : public frc2::SubsystemBase {
