@@ -4,7 +4,6 @@
 
 #include "RobotContainer.h"
 
-
 #include <frc/controller/PIDController.h>
 #include <frc/geometry/Translation2d.h>
 #include <frc/smartdashboard/SmartDashboard.h>

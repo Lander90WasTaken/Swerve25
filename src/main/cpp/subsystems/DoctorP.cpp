@@ -1,5 +1,6 @@
 #include <frc2/command/SubsystemBase.h>
 #include <subsystems/DoctorP.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 DoctorP::DoctorP(){
         DoctorPInst.StartClient4("robot");
@@ -10,20 +11,23 @@ DoctorP::DoctorP(){
         //Gets X and Y values from Very Awesome Table (name and values may need to be tweaked).
         xSub = table->GetDoubleTopic("X").Subscribe(0.0);
         ySub = table->GetDoubleTopic("Y").Subscribe(0.0);
-
+        aprilTagSub = table->GetDoubleTopic("AprilTag").Subscribe(0.0);
 }
 
 void DoctorP::TeleopPeriodic(){
-    xVal = xSub.Get();
-    yVal = ySub.Get();
+
 }
 
   
 
-double DoctorP::GetX(){
-    return xVal;
+double DoctorP::GetX(){ 
+    return xSub.Get(32.67);
 }
 
 double DoctorP::GetY(){
-    return yVal;  
+    return ySub.Get(32.67);  
+}
+
+int DoctorP::ActiveAprilTag(){
+    return int(aprilTagSub.Get(32.67));
 }

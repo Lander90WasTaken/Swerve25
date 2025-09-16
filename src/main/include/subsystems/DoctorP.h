@@ -12,15 +12,19 @@ class DoctorP : public frc2::SubsystemBase {
 
      double GetY();
 
-     void TeleopPeriodic();
+     int ActiveAprilTag();
 
+     void TeleopPeriodic();
 
 
 private:
     nt::NetworkTableInstance DoctorPInst= nt::NetworkTableInstance::Create();
     //inst may be subject to change as Mr.Baker Jr sees fit.
-    nt::DoubleSubscriber ySub;
-    nt::DoubleSubscriber xSub;
+
     double xVal;
     double yVal;
+
+    nt::DoubleSubscriber ySub;
+    nt::DoubleSubscriber xSub;
+    nt::DoubleSubscriber aprilTagSub;
 };

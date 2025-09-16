@@ -17,6 +17,7 @@ Climber::Climber(){
 
 void Climber::Periodic(){
     frc::SmartDashboard::PutNumber("climberEncoder",m_climberEncoder.GetPosition());
+    Climber::InPosition();
 }
 
 void Climber::SimulationPeriodic(){
@@ -43,4 +44,14 @@ bool Climber::MovePigeon(){
 
 double Climber::EncoderValue(){
     return m_climberEncoder.GetPosition();
+}
+
+void Climber::InPosition(){
+    if(m_climberLimitSwitch.Get() == true){
+        m_driverController.SetRumble(m_driverController.kRightRumble, 1);
+        m_driverController.SetRumble(m_driverController.kLeftRumble, 1);
+        m_leds.setLEDColor(0, 255, 0);
+        m_driverController.SetRumble(m_driverController.kRightRumble, 0);
+        m_driverController.SetRumble(m_driverController.kLeftRumble, 0);
+    }
 }

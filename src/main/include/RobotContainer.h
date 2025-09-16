@@ -26,7 +26,7 @@
 #include "subsystems/Pincher.h"
 #include "subsystems/Loader.h"
 #include "subsystems/Climber.h"
-#include "subsystems/LEDS.h"
+#include "subsystems/LEDs.h"
 #include "subsystems/DoctorP.h"
 
 /**

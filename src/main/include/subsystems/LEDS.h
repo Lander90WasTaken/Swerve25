@@ -1,3 +1,4 @@
+#pragma once
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/PWM.h>
@@ -8,7 +9,6 @@ class LEDs : public frc2::SubsystemBase {
      LEDs();
 
      void TeleopPeriodic();
-
     //void SetLED(bool value);
     
      void setLEDColor(int redValue, int greenValue, int blueValue);
@@ -17,8 +17,8 @@ class LEDs : public frc2::SubsystemBase {
 
 
 private:
-    frc::PWM m_ledRed{3}; // PWM pin 1
-    frc::PWM m_ledGreen{4}; // PWM pin 1
-    frc::PWM m_ledBlue{5}; // PWM pin 1
+    frc::PWM m_ledRed{3}; // PWM pin 3
+    frc::PWM m_ledGreen{4}; // PWM pin 4
+    frc::PWM m_ledBlue{5}; // PWM pin 5
     bool areTheyOnBro;
 };

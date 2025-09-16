@@ -8,7 +8,9 @@
 #include <frc2/command/CommandScheduler.h>
 
 
-void Robot::RobotInit() {frc::SmartDashboard::PutNumber("ChooseRoutine", 1);}
+void Robot::RobotInit() {
+  frc::SmartDashboard::PutNumber("ChooseRoutine", 1);
+}
 
 /**
  * This function is called every 20 ms, no matter the mode. Use
@@ -18,7 +20,12 @@ void Robot::RobotInit() {frc::SmartDashboard::PutNumber("ChooseRoutine", 1);}
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-void Robot::RobotPeriodic() {frc2::CommandScheduler::GetInstance().Run(); }
+void Robot::RobotPeriodic() {
+  frc2::CommandScheduler::GetInstance().Run(); 
+  frc::SmartDashboard::PutNumber("RoboX: ", m_doctorP.GetX());
+  frc::SmartDashboard::PutNumber("RoboY: ", m_doctorP.GetY());
+  frc::SmartDashboard::PutNumber("AprilTag: ", m_doctorP.ActiveAprilTag());
+}
 
 /**
  * This function is called once each time the robot enters Disabled mode. You
