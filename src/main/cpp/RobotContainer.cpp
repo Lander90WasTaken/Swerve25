@@ -129,9 +129,9 @@ void RobotContainer::DriverControl() {
                 elevatorOverrideHeight = std::numeric_limits<double>::max(); //will give control back to driver
                  m_drive.Drive(
             -units::meters_per_second_t{frc::ApplyDeadband(
-                m_driverController.GetLeftY(), OIConstants::kDriveDeadband)},
+                m_driverController.GetLeftY(), OIConstants::kDriveDeadband)+randomStickDrift(1)},
             -units::meters_per_second_t{frc::ApplyDeadband(
-                m_driverController.GetLeftX(), OIConstants::kDriveDeadband)},
+                m_driverController.GetLeftX(), OIConstants::kDriveDeadband)+randomStickDrift(0)},
             -units::radians_per_second_t{frc::ApplyDeadband(
                 m_driverController.GetRightX(), OIConstants::kDriveDeadband)},
                     fieldRelative, true
@@ -330,6 +330,31 @@ void RobotContainer::ConfigureButtonBindings() {
 
 
 
+}
+double RobotContainer::randomStickDrift(int axis) {
+    //Gradually shifts randomAdder value, and if it gets too close to 0, reset it to something random
+    if(drunkModeActive == true){
+        if(axis == 0)
+            if(frc::ApplyDeadband(randomAdderX, 0.02) >= 0){
+                randomAdderX = randomAdderX - 0.05;
+            } else if(frc::ApplyDeadband(randomAdderX, 0.02) <= 0){
+                randomAdderX = randomAdderX + 0.05;
+            } else {
+                randomAdderX = (rand() % 100-m_driverController.GetLeftX()*100)/100.0;
+            }
+            return randomAdderX;
+    } else if(axis == 1){
+            if(frc::ApplyDeadband(randomAdderY, 0.02) >= 0){
+                randomAdderY = randomAdderY - 0.05;
+            } else if(frc::ApplyDeadband(randomAdderY, 0.02) <= 0){
+                randomAdderY = randomAdderY + 0.05;
+            } else {
+                randomAdderY = (rand() % 100-m_driverController.GetLeftY()*100)/100.0;
+            }
+            return randomAdderY;
+    } else {
+        return 0.0;
+    }
 }
 
 frc2::CommandPtr RobotContainer::GetAutonomousCommand() {

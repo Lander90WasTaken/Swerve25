@@ -71,6 +71,7 @@ class RobotContainer {
   void ElevatorControl();
   void ClimberControl();
   void coDriverControl();
+  double RobotContainer::randomStickDrift(int axis);
   photon::PhotonTrackedTarget hasValidAprilTagTarget();
   // The chooser for the autonomous routines
   
@@ -78,4 +79,7 @@ class RobotContainer {
   void ConfigureButtonBindings();
   double elevatorOverrideHeight;
   bool fieldRelative;
+  double randomAdderX;
+  double randomAdderY;
+  bool drunkModeActive = true;
 };
