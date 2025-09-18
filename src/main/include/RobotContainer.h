@@ -50,6 +50,8 @@ class RobotContainer {
   frc::DigitalInput m_ElevatorSwitch{0};
   frc::DigitalInput m_PivotSwitch{1};
   frc::DigitalInput m_PivotDownSwitch{2};
+
+  
                       
   // The robot's subsystems and commands are defined here...
 
@@ -71,10 +73,14 @@ class RobotContainer {
   void ElevatorControl();
   void ClimberControl();
   void coDriverControl();
+  double randomStickDrift(int axis);
+  //0 is x and 1 is y
   photon::PhotonTrackedTarget hasValidAprilTagTarget();
   // The chooser for the autonomous routines
   
-
+  double randomAdderX;
+  double randomAdderY;
+  bool drunkModeActive = true;
   void ConfigureButtonBindings();
   double elevatorOverrideHeight;
   bool fieldRelative;
