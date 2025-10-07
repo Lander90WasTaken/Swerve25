@@ -18,7 +18,7 @@ class DoctorP : public frc2::SubsystemBase {
 
 
 private:
-    nt::NetworkTableInstance DoctorPInst= nt::NetworkTableInstance::Create();
+    nt::NetworkTableInstance DoctorPInst = nt::NetworkTableInstance::Create();
     //inst may be subject to change as Mr.Baker Jr sees fit.
 
     double xVal;
@@ -26,5 +26,5 @@ private:
 
     nt::DoubleSubscriber ySub;
     nt::DoubleSubscriber xSub;
-    nt::DoubleSubscriber aprilTagSub;
+
 };

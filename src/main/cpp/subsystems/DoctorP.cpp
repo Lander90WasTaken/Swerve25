@@ -4,6 +4,7 @@
 
 DoctorP::DoctorP(){
         DoctorPInst.StartClient4("robot");
+        DoctorPInst.SetServerTeam(3267);
         // connect to a specific host/port (may need to be tweaked).
         DoctorPInst.SetServer("host", NT_DEFAULT_PORT4);
 
@@ -11,7 +12,6 @@ DoctorP::DoctorP(){
         //Gets X and Y values from Very Awesome Table (name and values may need to be tweaked).
         xSub = table->GetDoubleTopic("X").Subscribe(0.0);
         ySub = table->GetDoubleTopic("Y").Subscribe(0.0);
-        aprilTagSub = table->GetDoubleTopic("AprilTag").Subscribe(0.0);
 }
 
 void DoctorP::TeleopPeriodic(){
@@ -26,8 +26,4 @@ double DoctorP::GetX(){
 
 double DoctorP::GetY(){
     return ySub.Get(32.67);  
-}
-
-int DoctorP::ActiveAprilTag(){
-    return int(aprilTagSub.Get(32.67));
 }
