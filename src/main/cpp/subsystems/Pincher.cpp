@@ -1,5 +1,3 @@
-
-
 #include "subsystems/Pincher.h"
 #include "rev/SparkMax.h"
 #include <rev/config/SparkMaxConfig.h>
